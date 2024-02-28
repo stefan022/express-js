@@ -32,16 +32,6 @@ const getSingleUser = async (req, res) => {
 	});
 };
 
-const addUser = async (req, res) => {
-	const dto = req.body;
-
-	await User.create(dto);
-
-	return res.send({
-		msg: "success",
-	});
-};
-
 const updateUser = async (req, res) => {
 	const dto = req.body;
 
@@ -68,4 +58,4 @@ const deleteUser = async (req, res) => {
 	});
 };
 
-module.exports = { getUsers, getSingleUser, addUser, updateUser, deleteUser };
+module.exports = { getUsers, getSingleUser, updateUser, deleteUser };
