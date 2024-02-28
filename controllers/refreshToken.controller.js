@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const Role = require("../models/Role");
 
 dotenv.config();
 
@@ -22,6 +23,10 @@ const refreshToken = async (req, res) => {
 		return res.sendStatus(403);
 	}
 
+	const { rol_token } = await Role.findOne({
+		where: { rol_id: checkUser.rol_id },
+	});
+
 	jwt.verify(
 		refresh_token,
 		process.env.REFRESH_TOKEN_SECRET,
@@ -31,7 +36,12 @@ const refreshToken = async (req, res) => {
 			}
 
 			const accessToken = jwt.sign(
-				{ username: decoded.username },
+				{
+					info: {
+						username: decoded.info.username,
+						role: decoded.info.role,
+					},
+				},
 				process.env.ACCESS_TOKEN_SECRET,
 				{ expiresIn: "30m" }
 			);
@@ -39,6 +49,7 @@ const refreshToken = async (req, res) => {
 			res.send({
 				msg: "success",
 				token: accessToken,
+				role: rol_token,
 			});
 		}
 	);

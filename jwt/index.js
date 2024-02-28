@@ -4,9 +4,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 module.exports = (req, res, next) => {
-	const authHeader = req.headers.authorization;
+	const authHeader = req.headers.authorization || req.headers.Authorization;
 
-	if (!authHeader) {
+	if (!authHeader?.startsWith("Bearer ")) {
 		return res.sendStatus(401);
 	}
 
@@ -17,7 +17,8 @@ module.exports = (req, res, next) => {
 			return res.sendStatus(403);
 		}
 
-		req.user = decoded.username;
+		req.username = decoded.info.username;
+		req.role = decoded.info.role;
 
 		next();
 	});

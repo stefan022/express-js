@@ -1,6 +1,8 @@
 const { sequelize } = require("../db");
 const { DataTypes } = require("sequelize");
 
+const Role = require("./Role");
+
 const User = sequelize.define(
 	"user",
 	{
@@ -21,6 +23,14 @@ const User = sequelize.define(
 		},
 		refresh_token: {
 			type: DataTypes.STRING,
+		},
+		rol_id: {
+			type: DataTypes.INTEGER.UNSIGNED,
+			allowNull: false,
+			references: {
+				model: Role,
+				key: "rol_id",
+			},
 		},
 	},
 	{

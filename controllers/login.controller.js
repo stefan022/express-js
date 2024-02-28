@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const Role = require("../models/Role");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 
@@ -35,8 +36,17 @@ const login = async (req, res) => {
 		});
 	}
 
+	const { rol_token } = await Role.findOne({
+		where: { rol_id: checkUser.rol_id },
+	});
+
 	const accessToken = jwt.sign(
-		{ username: checkUser.usr_username },
+		{
+			info: {
+				username: checkUser.usr_username,
+				role: rol_token,
+			},
+		},
 		process.env.ACCESS_TOKEN_SECRET,
 		{ expiresIn: "30m" }
 	);
@@ -60,6 +70,7 @@ const login = async (req, res) => {
 	return res.send({
 		msg: "success",
 		token: accessToken,
+		role: rol_token,
 	});
 };
 
