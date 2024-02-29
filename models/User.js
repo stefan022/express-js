@@ -31,6 +31,7 @@ const User = sequelize.define(
 				model: Role,
 				key: "rol_id",
 			},
+			defaultValue: process.env.ROLE_ID,
 		},
 	},
 	{

@@ -8,4 +8,5 @@ module.exports = {
 	password: process.env.DB_PASSWORD,
 	db: process.env.DB,
 	dialect: process.env.DB_DIALECT,
+	port: process.env.DB_PORT,
 };

@@ -35,6 +35,16 @@ const getSingleUser = async (req, res) => {
 const updateUser = async (req, res) => {
 	const dto = req.body;
 
+	const checkUser = await User.findOne({
+		where: { usr_username: username },
+	});
+
+	if (checkUser) {
+		return res.status(401).send({
+			err: "Username already exists",
+		});
+	}
+
 	await User.update(dto, { where: { usr_id: req.params.id } });
 
 	return res.send({
