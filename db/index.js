@@ -1,9 +1,14 @@
 const dbConfig = require("../config/db.config");
 const { Sequelize } = require("sequelize");
+const dialectModule = require("mysql2");
 
-const sequelize = new Sequelize(dbConfig.db, dbConfig.user, dbConfig.password, {
-	host: dbConfig.host,
+const sequelize = new Sequelize({
 	dialect: dbConfig.dialect,
+	host: dbConfig.host,
+	username: dbConfig.user,
+	password: dbConfig.password,
+	database: dbConfig.db,
+	dialectModule,
 });
 
 const connectToDb = async () => {
