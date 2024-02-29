@@ -11,11 +11,11 @@ const jwtVerify = require("../jwt");
 
 module.exports = (app) => {
 	app.use("/", homeRoutes);
-	app.use("/register", registerRoutes);
-	app.use("/login", loginRoutes);
-	app.use("/refresh", refreshRoutes);
-	app.use("/logout", logoutRoutes);
-	app.use("/users", jwtVerify, userRoutes);
-	app.use("/articles", jwtVerify, articleRoutes);
+	app.use("/api/v1/register", registerRoutes);
+	app.use("/api/v1/login", loginRoutes);
+	app.use("/api/v1/refresh", refreshRoutes);
+	app.use("/api/v1/logout", logoutRoutes);
+	app.use("/api/v1/users", jwtVerify, userRoutes);
+	app.use("/api/v1/articles", jwtVerify, articleRoutes);
 	app.use("*", notFoundRoutes);
 };
