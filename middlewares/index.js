@@ -2,8 +2,10 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import cookieParser from "cookie-parser";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const __dirname = import.meta.dirname; // node -v 20.11
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default (app) => {
 	app.use(cors());

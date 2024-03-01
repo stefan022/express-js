@@ -1,5 +1,8 @@
 import path from "path";
-const __dirname = import.meta.dirname; // node -v 20.11
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const notFoundController = (req, res) => {
 	return res.sendFile(path.join(__dirname, "..", "views", "404.html"));
