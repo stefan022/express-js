@@ -8,4 +8,4 @@ const verifyRole = (req, res, next) => {
 	next();
 };
 
-module.exports = verifyRole;
+export default verifyRole;

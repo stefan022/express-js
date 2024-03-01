@@ -1,8 +1,8 @@
-const bcrypt = require("bcrypt");
-const User = require("../models/User");
-const Role = require("../models/Role");
-const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
+import bcrypt from "bcrypt";
+import User from "../models/User.js";
+import Role from "../models/Role.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -201,4 +201,4 @@ const refreshToken = async (req, res) => {
 	);
 };
 
-module.exports = { register, login, logout, refreshToken };
+export { register, login, logout, refreshToken };

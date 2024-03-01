@@ -1,12 +1,12 @@
-const express = require("express");
-const {
+import express from "express";
+import {
 	getArticles,
 	addArticle,
 	getSingleArticle,
 	updateArticle,
 	deleteArticle,
-} = require("../controllers/article.controller");
-const verifyRole = require("../utils/verifyRole");
+} from "../controllers/article.controller.js";
+import verifyRole from "../utils/verifyRole.js";
 
 const router = express.Router();
 
@@ -16,4 +16,4 @@ router.get("/:id", getSingleArticle);
 router.put("/:id", verifyRole, updateArticle);
 router.delete("/:id", verifyRole, deleteArticle);
 
-module.exports = router;
+export default router;

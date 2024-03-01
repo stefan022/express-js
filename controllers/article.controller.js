@@ -1,4 +1,4 @@
-const Article = require("../models/Article");
+import Article from "../models/Article.js";
 
 const getArticles = async (req, res) => {
 	const articles = await Article.findAll();
@@ -69,7 +69,7 @@ const deleteArticle = async (req, res) => {
 	});
 };
 
-module.exports = {
+export {
 	getArticles,
 	getSingleArticle,
 	addArticle,

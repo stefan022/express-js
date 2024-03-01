@@ -1,11 +1,11 @@
-const express = require("express");
-const {
+import express from "express";
+import {
 	getUsers,
 	getSingleUser,
 	updateUser,
 	deleteUser,
-} = require("../controllers/user.controller");
-const verifyRole = require("../utils/verifyRole");
+} from "../controllers/user.controller.js";
+import verifyRole from "../utils/verifyRole.js";
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.get("/:id", verifyRole, getSingleUser);
 router.put("/:id", verifyRole, updateUser);
 router.delete("/:id", verifyRole, deleteUser);
 
-module.exports = router;
+export default router;

@@ -1,8 +1,9 @@
-const express = require("express");
-const routes = require("./routes");
-const middlewares = require("./middlewares");
-const PORT = require("./constants/port.constant");
-const { connectToDb } = require("./db");
+import express from "express";
+import routes from "./routes/index.js";
+import middlewares from "./middlewares/index.js";
+
+import { PORT } from "./constants/port.constant.js";
+import { connectToDb } from "./db/index.js";
 
 const app = express();
 

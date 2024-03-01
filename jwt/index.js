@@ -1,9 +1,9 @@
-const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
 	const authHeader = req.headers.authorization || req.headers.Authorization;
 
 	if (!authHeader?.startsWith("Bearer ")) {

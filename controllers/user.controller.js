@@ -1,4 +1,4 @@
-const User = require("../models/User");
+import User from "../models/User.js";
 
 const getUsers = async (req, res) => {
 	const users = await User.findAll();
@@ -68,4 +68,4 @@ const deleteUser = async (req, res) => {
 	});
 };
 
-module.exports = { getUsers, getSingleUser, updateUser, deleteUser };
+export { getUsers, getSingleUser, updateUser, deleteUser };

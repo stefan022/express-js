@@ -1,10 +1,10 @@
-const express = require("express");
-const {
+import express from "express";
+import {
 	register,
 	login,
 	logout,
 	refreshToken,
-} = require("../controllers/auth.controller");
+} from "../controllers/auth.controller.js";
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.post("/login", login);
 router.get("/logout", logout);
 router.get("/refresh-token", refreshToken);
 
-module.exports = router;
+export default router;

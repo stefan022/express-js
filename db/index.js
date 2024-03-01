@@ -1,6 +1,6 @@
-const dbConfig = require("../config/db.config");
-const { Sequelize } = require("sequelize");
-const dialectModule = require("mysql2");
+import dbConfig from "../config/db.config.js";
+import { Sequelize } from "sequelize";
+import dialectModule from "mysql2";
 
 const sequelize = new Sequelize({
 	dialect: dbConfig.dialect,
@@ -22,4 +22,4 @@ const connectToDb = async () => {
 	}
 };
 
-module.exports = { sequelize, connectToDb };
+export { sequelize, connectToDb };
